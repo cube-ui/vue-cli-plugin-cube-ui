@@ -1,0 +1,45 @@
+{
+  "postCompile": {
+    "type": "confirm",
+    "message": "Use post-compile?"
+  },
+  "importType": {
+    "type": "list",
+    "message": "Import type",
+    "choices": [
+      {
+        "name": "partly, import component on demand, which makes the size of imported code lighter",
+        "value": "partly",
+        "short": "Partly",
+        "checked": true
+      },
+      {
+        "name": "fully, import all the components",
+        "value": "fully",
+        "short": "Fully"
+      }
+    ]
+  },
+  "theme": {
+    "when": "postCompile",
+    "type": "confirm",
+    "message": "Custom theme?"
+  },
+  "rem": {
+    "when": "postCompile",
+    "type": "confirm",
+    "message": "Use rem layout?",
+    "default": false
+  },
+  "amfeFlexible": {
+    "when": "postCompile && rem",
+    "type": "confirm",
+    "message": "Use amfe-flexible?"
+  },
+  "vw": {
+    "when": "postCompile && !rem",
+    "type": "confirm",
+    "message": "Use vw layout?",
+    "default": false
+  }
+}

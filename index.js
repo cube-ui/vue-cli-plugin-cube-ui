@@ -1,0 +1,36 @@
+const PostCompilePlugin = require('webpack-post-compile-plugin')
+const TransformModulesPlugin = require('webpack-transform-modules-plugin')
+
+module.exports = (api, projectOptions) => {
+  const cubeUIOpts = projectOptions.pluginOptions && projectOptions.pluginOptions['cube-ui'] || {
+    postCompile: true
+  }
+  if (cubeUIOpts.postCompile) {
+    // post compile
+    api.chainWebpack(config => {
+      const conf = config.toConfig()
+      config
+        .plugin('post-compile')
+        .use(PostCompilePlugin, [{
+          config: {
+            module: {
+              rules: [...conf.module.rules]
+            }
+          }
+        }])
+    })
+  } else {
+    api.chainWebpack(config => {
+      config
+        .resolve
+        .alias
+        .set('cube-ui', 'cube-ui/lib')
+    })
+  }
+  // transfrom modules
+  api.chainWebpack(config => {
+    config
+      .plugin('transform-modules')
+      .use(TransformModulesPlugin)
+  })
+}
