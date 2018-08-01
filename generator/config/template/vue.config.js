@@ -5,7 +5,6 @@ module.exports = {
   baseUrl: '/',
   productionSourceMap: false,
   css: {
-    modules: true,
     extract: true,
     loaderOptions: {
       stylus: {
