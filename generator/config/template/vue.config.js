@@ -1,4 +1,4 @@
-<%_ if (theme) { _%>,
+<%_ if (theme) { _%>
 const path = require('path')
 <%_ } _%>
 module.exports = {
