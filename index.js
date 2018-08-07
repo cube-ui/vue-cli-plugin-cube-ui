@@ -2,6 +2,11 @@ const PostCompilePlugin = require('webpack-post-compile-plugin')
 const TransformModulesPlugin = require('webpack-transform-modules-plugin')
 
 module.exports = (api, projectOptions) => {
+  // handle stylus options import path
+  const imports = projectOptions.css.loaderOptions.stylus.import
+  imports.forEach((path, index) => {
+    imports[index] = api.resolve(path)
+  })
   const cubeUIOpts = projectOptions.pluginOptions && projectOptions.pluginOptions['cube-ui'] || {
     postCompile: true
   }

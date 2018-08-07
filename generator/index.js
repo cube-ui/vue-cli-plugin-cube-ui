@@ -1,7 +1,7 @@
 module.exports = (api, options) => {
   api.extendPackage({
     dependencies: {
-      'cube-ui': '~1.10.9'
+      'cube-ui': '~1.10.10'
     }
   })
   api.injectImports(api.entryFile, `import './cube-ui'`)

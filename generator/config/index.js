@@ -1,6 +1,20 @@
 module.exports = (api, options) => {
-  api.render('./template', {
-    postCompile: options.postCompile,
-    theme: options.theme
+  api.extendPackage({
+    vue: {
+      css: {
+        loaderOptions: {
+          stylus: {
+            'resolve url': true,
+            import: options.theme ? ['./src/theme'] : []
+          }
+        }
+      },
+      pluginOptions: {
+        'cube-ui': {
+          postCompile: !!options.postCompile,
+          theme: !!options.theme
+        }
+      }
+    }
   })
 }
