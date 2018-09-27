@@ -4,7 +4,17 @@ module.exports = (api, options) => {
       'cube-ui': '~1.10.13'
     }
   })
-  api.injectImports(api.entryFile, `import './cube-ui'`)
+
+  api.postProcessFiles(files => {
+    const entryFile = files[api.entryFile]
+    const vueImportStr = `from 'vue'`
+    if (entryFile && entryFile.indexOf(vueImportStr)) {
+      files[api.entryFile] = entryFile.replace(vueImportStr, vueImportStr + `\nimport './cube-ui'`)
+    } else {
+      api.injectImports(api.entryFile, `import './cube-ui'`)
+    }
+  })
+
   if (api.invoking) {
     api.postProcessFiles(files => {
       const appFile = files[`src/App.vue`]
