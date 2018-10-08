@@ -16,13 +16,7 @@ module.exports = (api, projectOptions) => {
       const conf = config.toConfig()
       config
         .plugin('post-compile')
-        .use(PostCompilePlugin, [{
-          config: {
-            module: {
-              rules: [...conf.module.rules]
-            }
-          }
-        }])
+        .use(PostCompilePlugin)
     })
   } else {
     api.chainWebpack(config => {
