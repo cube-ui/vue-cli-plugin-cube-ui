@@ -63,8 +63,7 @@ module.exports = (api, options) => {
   api.extendPackage({
     browserslist: [
       "> 1%",
-      "last 2 versions",
-      "not ie <= 8",
+      "not ie <= 11",
       "Android >= 4.0",
       "iOS >= 8"
     ]
