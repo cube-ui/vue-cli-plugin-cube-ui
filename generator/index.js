@@ -1,7 +1,7 @@
 module.exports = (api, options) => {
   api.extendPackage({
     dependencies: {
-      'cube-ui': '~1.10.13'
+      'cube-ui': '~1.11.0'
     }
   })
 
@@ -54,7 +54,7 @@ module.exports = (api, options) => {
           transform: 'cube-ui/lib/${member}',
           kebabCase: true,
           style: {
-            ignore: ['create-api', 'better-scroll']
+            ignore: ['create-api', 'better-scroll', 'locale']
           }
         }
       }
