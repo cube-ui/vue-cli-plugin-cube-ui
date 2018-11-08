@@ -1,7 +1,7 @@
 module.exports = (api, options) => {
   api.extendPackage({
     dependencies: {
-      'cube-ui': '~1.12.0'
+      'cube-ui': '~1.12.1'
     }
   })
 
